@@ -1,0 +1,10 @@
+---
+- hosts: all
+  become: yes
+  
+  vars:
+    venv_path: "/home/vagrant/wagtail_venv"
+    requirements_path: "/vagrant/requirements.txt"
+    
+  roles:
+    - {role: python}

@@ -1,0 +1,29 @@
+- name: Install Python 3
+  apt:
+    name: python3
+    state: present
+    update_cache: yes
+    
+- name: Install pip 3
+  apt:
+    name: python3-pip
+    state: present
+    update_cache: yes
+    
+- name: Install python 3 venv package
+  apt:
+    name: python3-venv
+    state: present
+    update_cache: yes
+    
+#Create virtualenv using python3
+- name: Create Virtual Environment
+  pip:
+    requirements: "{{ requirements_path }}"
+    virtualenv: "{{ venv_path }}"
+    virtualenv_command: /usr/bin/python3 -m venv
+    
+- name: Install wagtail
+  pip:
+    name: wagtail
+    virtualenv: "{{ venv_path }}"
